@@ -4,7 +4,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "nicobytes-dev",
+	"name": "nicobytes-dev-website",
 	"main": "./dist/server/server.mjs",
 	"compatibility_date": "2025-05-31",
   /**
