@@ -8,17 +8,21 @@ export const routes: Routes = [
   {
     path: '',
     component: HomePage,
+    title: 'Home - @nicobytes',
   },
   {
     path: 'about',
     component: AboutPage,
+    title: 'About - @nicobytes',
   },
   {
     path: 'blog',
     component: BlogPage,
+    title: 'Blog - @nicobytes',
   },
   {
     path: 'portfolio',
     component: PortfolioPage,
+    title: 'Portfolio - @nicobytes',
   },
 ];
