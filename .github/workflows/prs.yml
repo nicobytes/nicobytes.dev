@@ -1,9 +1,7 @@
-name: Deploy
+name: Code Quality Checks
 
 on:
-  push:
-    branches:
-      - main
+  pull_request:
 
 jobs:
   lint:
@@ -20,10 +18,10 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Run ESLint
+      - name: Run Linter
         run: npm run lint
 
-  deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -39,10 +37,3 @@ jobs:
 
       - name: Build
         run: npm run build
-
-      - name: Deploy SSR
-        uses: cloudflare/wrangler-action@v3
-        with:
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          command: deploy
