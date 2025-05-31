@@ -2,7 +2,8 @@ name: Deploym
 
 on:
   push:
-    branches: [master]
+    branches:
+      - main
 
 jobs:
   deploy:
@@ -23,7 +24,7 @@ jobs:
         run: npm run build
 
       - name: Deploy SSR
-        uses: cloudflare/wrangler-action@v4
+        uses: cloudflare/wrangler-action@v3
         with:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
