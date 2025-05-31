@@ -1,7 +1,9 @@
-name: Code Quality Checks
+name: Linter
 
 on:
   pull_request:
+  push:
+    branches: [master]
 
 jobs:
   lint:
