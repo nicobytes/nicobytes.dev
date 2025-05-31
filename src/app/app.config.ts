@@ -1,6 +1,6 @@
 import {
   ApplicationConfig,
-  provideExperimentalZonelessChangeDetection,
+  provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
@@ -14,6 +14,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideClientHydration(withIncrementalHydration()),
-    provideExperimentalZonelessChangeDetection(),
+    provideZonelessChangeDetection(),
   ],
 };
