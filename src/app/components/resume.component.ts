@@ -23,8 +23,12 @@ interface Role {
   template: `<div
     class="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
   >
-    <h2 class="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-      <app-briefcase-icon class="h-6 w-6 flex-none block" />
+    <h2
+      class="flex text-sm items-center font-semibold text-zinc-900 dark:text-zinc-100"
+    >
+      <app-briefcase-icon
+        class="h-5 w-5 flex-none block fill-zinc-500 dark:fill-zinc-400"
+      />
       <span class="ml-3">Work</span>
     </h2>
     <ol class="mt-6 space-y-4">

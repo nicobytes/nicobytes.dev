@@ -7,6 +7,7 @@ import { InstagramIconComponent } from '@/components/icons/instagram.componet';
 import { LinkedinIconComponent } from '@/components/icons/linkedin.component';
 import { ResumeComponent } from '@/components/resume.component';
 import { XIconComponent } from '@/components/icons/x.component';
+import { DiscordIconComponent } from '@/components/icons/discord.component';
 import { CardComponent } from '@/components/card/card.component';
 import { CardTimeComponent } from '@/components/card/card-time.component';
 import { CardTitleComponent } from '@/components/card/card-title.component';
@@ -26,6 +27,7 @@ import { CardDescriptionComponent } from '@/components/card/card-description.com
     CardTimeComponent,
     CardTitleComponent,
     CardDescriptionComponent,
+    DiscordIconComponent,
   ],
   templateUrl: './home.page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
