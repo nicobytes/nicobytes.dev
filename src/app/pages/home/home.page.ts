@@ -18,7 +18,7 @@ import { CardComponent } from '@/components/card/card.component';
 import { CardTimeComponent } from '@/components/card/card-time.component';
 import { CardTitleComponent } from '@/components/card/card-title.component';
 import { CardDescriptionComponent } from '@/components/card/card-description.component';
-import { DOTCMS_CLIENT_TOKEN } from '@/dot-client.config';
+import { DotCMSClient } from '@/dot-client.config';
 import { BASE_EXTRA_QUERIES } from '@/query';
 
 @Component({
@@ -41,7 +41,7 @@ import { BASE_EXTRA_QUERIES } from '@/query';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePage implements OnInit {
-  #dotcmsClient = inject(DOTCMS_CLIENT_TOKEN);
+  #dotcmsClientv2 = inject(DotCMSClient);
 
   photos$ = signal([
     {
@@ -71,7 +71,7 @@ export class HomePage implements OnInit {
   }
 
   load() {
-    this.#dotcmsClient.page
+    this.#dotcmsClientv2.page
       .get('home', {
         graphql: {
           ...BASE_EXTRA_QUERIES,

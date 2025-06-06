@@ -1,24 +1,28 @@
-import { InjectionToken } from '@angular/core';
+import { makeEnvironmentProviders, EnvironmentProviders } from '@angular/core';
 import { createDotCMSClient } from '@dotcms/client/next';
 import { DotCMSClientConfig } from '@dotcms/types';
 
-import { environment } from '@env/environment';
-
 type clientType = ReturnType<typeof createDotCMSClient>;
 
-export const DOTCMS_CLIENT_TOKEN = new InjectionToken<clientType>(
-  'DOTCMS_CLIENT',
-);
+// eslint-disable-next-line @typescript-eslint/no-empty-object-type, @typescript-eslint/no-unsafe-declaration-merging
+export interface DotCMSClient extends clientType {}
 
-export const DOTCMS_CLIENT_CONFIG: DotCMSClientConfig = {
-  dotcmsUrl: environment.dotcmsUrl,
-  authToken: environment.authToken,
-  siteId: environment.siteId,
-};
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
+export class DotCMSClient {
+  constructor(client: clientType) {
+    return client;
+  }
+}
 
-const client = createDotCMSClient(DOTCMS_CLIENT_CONFIG);
+export function provideDotCMSClient(
+  options: DotCMSClientConfig,
+): EnvironmentProviders {
+  const client = createDotCMSClient(options);
 
-export const provideDotCMSClient = {
-  provide: DOTCMS_CLIENT_TOKEN,
-  useValue: client,
-};
+  return makeEnvironmentProviders([
+    {
+      provide: DotCMSClient,
+      useFactory: () => new DotCMSClient(client),
+    },
+  ]);
+}

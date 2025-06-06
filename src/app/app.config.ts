@@ -21,7 +21,11 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(withIncrementalHydration()),
     provideZonelessChangeDetection(),
-    provideDotCMSClient,
+    provideDotCMSClient({
+      dotcmsUrl: environment.dotcmsUrl,
+      authToken: environment.authToken,
+      siteId: environment.siteId,
+    }),
     provideDotCMSImageLoader(environment.dotcmsUrl),
     DotCMSEditablePageService,
   ],
