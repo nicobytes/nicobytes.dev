@@ -1,0 +1,6 @@
+export const environment = {
+  dotcmsUrl: 'https://nicobytes-prod.dotcms.cloud',
+  authToken:
+    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhcGk5NzJhNjMzOS00ZjgxLTQ0ZWEtOGI3NC0yNmUzMjZkYTgzNzYiLCJ4bW9kIjoxNzQ1MzQ5ODQzMDAwLCJuYmYiOjE3NDUzNDk4NDMsImlzcyI6Im5pY29ieXRlcy1wcm9kIiwibGFiZWwiOiJOZXh0SlMiLCJleHAiOjE4Mzk5ODg4MDAsImlhdCI6MTc0NTM0OTg0MywianRpIjoiN2EwYjQ4ZTAtMzM5OS00YzQ5LThhMTYtM2RjN2MzYWY2NzQ3In0.S6dMt428yD_zhI95d944jX1YZuB0qsm4xjaJsR1EggU',
+  siteId: '6dd70bb2-c9ea-4374-b475-0f199c7c50ad',
+};

@@ -2,7 +2,6 @@ import {
   ChangeDetectionStrategy,
   Component,
   inject,
-  OnInit,
   signal,
 } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
@@ -19,7 +18,6 @@ import { CardTimeComponent } from '@/components/card/card-time.component';
 import { CardTitleComponent } from '@/components/card/card-title.component';
 import { CardDescriptionComponent } from '@/components/card/card-description.component';
 import { DOTCMS_CLIENT_TOKEN } from '@/dot-client.config';
-import { BASE_EXTRA_QUERIES } from '@/query';
 
 @Component({
   selector: 'app-home',
@@ -37,10 +35,10 @@ import { BASE_EXTRA_QUERIES } from '@/query';
     CardDescriptionComponent,
     DiscordIconComponent,
   ],
-  templateUrl: './home.page.html',
+  templateUrl: './generic.page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePage implements OnInit {
+export class GenericPage {
   #dotcmsClient = inject(DOTCMS_CLIENT_TOKEN);
 
   photos$ = signal([
@@ -65,23 +63,4 @@ export class HomePage implements OnInit {
       alt: 'Photo 5',
     },
   ]);
-
-  ngOnInit(): void {
-    this.load();
-  }
-
-  load() {
-    this.#dotcmsClient.page
-      .get('home', {
-        graphql: {
-          ...BASE_EXTRA_QUERIES,
-        },
-      })
-      .then((page) => {
-        console.log('DotCMS Page Asset: ', page);
-      })
-      .catch((error) => {
-        console.error('Error fetching page asset: ', error);
-      });
-  }
 }
