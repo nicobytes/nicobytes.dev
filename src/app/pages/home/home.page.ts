@@ -6,6 +6,7 @@ import {
   signal,
 } from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
+import { DotCMSClient } from '@dotcms/angular/next';
 
 import { ContainerComponent } from '@/components/container.component';
 import { GitHubIconComponent } from '@/components/icons/github.component';
@@ -18,7 +19,6 @@ import { CardComponent } from '@/components/card/card.component';
 import { CardTimeComponent } from '@/components/card/card-time.component';
 import { CardTitleComponent } from '@/components/card/card-title.component';
 import { CardDescriptionComponent } from '@/components/card/card-description.component';
-import { DotCMSClient } from '@/dot-client.config';
 import { BASE_EXTRA_QUERIES } from '@/query';
 
 @Component({
@@ -41,7 +41,7 @@ import { BASE_EXTRA_QUERIES } from '@/query';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HomePage implements OnInit {
-  #dotcmsClientv2 = inject(DotCMSClient);
+  #dotcmsClient = inject(DotCMSClient);
 
   photos$ = signal([
     {
@@ -71,7 +71,7 @@ export class HomePage implements OnInit {
   }
 
   load() {
-    this.#dotcmsClientv2.page
+    this.#dotcmsClient.page
       .get('home', {
         graphql: {
           ...BASE_EXTRA_QUERIES,

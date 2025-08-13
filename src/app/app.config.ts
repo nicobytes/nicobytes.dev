@@ -13,8 +13,10 @@ import {
 import { environment } from '@env/environment';
 
 import { provideDotCMSImageLoader } from '@dotcms/angular';
-import { DotCMSEditablePageService } from '@dotcms/angular/next';
-import { provideDotCMSClient } from './dot-client.config';
+import {
+  DotCMSEditablePageService,
+  provideDotCMSClient,
+} from '@dotcms/angular/next';
 
 export const appConfig: ApplicationConfig = {
   providers: [
