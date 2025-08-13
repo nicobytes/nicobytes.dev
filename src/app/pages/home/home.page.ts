@@ -1,5 +1,12 @@
-import { ChangeDetectionStrategy, Component, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { NgOptimizedImage } from '@angular/common';
+import { DotCMSClient } from '@dotcms/angular/next';
 
 import { ContainerComponent } from '@/components/container.component';
 import { GitHubIconComponent } from '@/components/icons/github.component';
@@ -12,6 +19,7 @@ import { CardComponent } from '@/components/card/card.component';
 import { CardTimeComponent } from '@/components/card/card-time.component';
 import { CardTitleComponent } from '@/components/card/card-title.component';
 import { CardDescriptionComponent } from '@/components/card/card-description.component';
+import { BASE_EXTRA_QUERIES } from '@/query';
 
 @Component({
   selector: 'app-home',
@@ -32,7 +40,9 @@ import { CardDescriptionComponent } from '@/components/card/card-description.com
   templateUrl: './home.page.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  #dotcmsClient = inject(DotCMSClient);
+
   photos$ = signal([
     {
       src: './images/photos/image-1.jpg',
@@ -55,4 +65,23 @@ export class HomePage {
       alt: 'Photo 5',
     },
   ]);
+
+  ngOnInit(): void {
+    this.load();
+  }
+
+  load() {
+    this.#dotcmsClient.page
+      .get('home', {
+        graphql: {
+          ...BASE_EXTRA_QUERIES,
+        },
+      })
+      .then((page) => {
+        console.log('DotCMS Page Asset: ', page);
+      })
+      .catch((error) => {
+        console.error('Error fetching page asset: ', error);
+      });
+  }
 }

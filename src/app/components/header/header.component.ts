@@ -64,12 +64,6 @@ import { BehaviorSubject, merge } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  // TODO
-  style = {
-    height: 'var(--header-height)',
-    marginBottom: 'var(--header-mb)',
-  };
-
   route = inject(ActivatedRoute);
   router = inject(Router);
 
